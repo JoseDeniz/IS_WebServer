@@ -1,8 +1,8 @@
 # IS_WebServer
 
-    RESTService implementation made in the Systems Engineering subject
+    RESTService implementation made in the Systems Engineering subject using [Spark](http://sparkjava.com/)
 
-   ## Routes:
+   * Routes:
     
       * GET("/hello"): returns a Hello World! message
 
