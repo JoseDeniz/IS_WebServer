@@ -4,7 +4,8 @@
 
 ## Heroku
 
-   The app is deployed in [Heroku](https://www.heroku.com/), [try](https://is-webserver.herokuapp.com) it!
+   The app is deployed in [Heroku](https://www.heroku.com/)
+   You can try it [here](https://is-webserver.herokuapp.com)
 
 ## Routes:
     
