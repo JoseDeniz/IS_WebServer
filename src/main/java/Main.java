@@ -7,7 +7,7 @@ public class Main {
 
         port(Integer.valueOf(System.getenv("PORT")));
 
-        get("/", (req, res) -> "Hello World");
+        get("/hello", (req, res) -> "Hello World!");
     }
 
 }
