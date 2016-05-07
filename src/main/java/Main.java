@@ -1,13 +1,24 @@
-import static spark.Spark.get;
-import static spark.Spark.port;
+import java.util.Optional;
+
+import static spark.Spark.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        port(Integer.valueOf(System.getenv("PORT")));
+        setConfig();
 
         get("/hello", (req, res) -> "{\"message\": \"Hello World!\"}");
+    }
+
+    private static void setConfig() {
+        setPort();
+        staticFileLocation("/public");
+    }
+
+    private static void setPort() {
+        String port = System.getenv("PORT");
+        port(Optional.ofNullable(port).map(Integer::valueOf).orElse(4567));
     }
 
 }
