@@ -1,3 +1,6 @@
+import helper.CorsFilter;
+import spark.Route;
+
 import java.util.Optional;
 
 import static spark.Spark.*;
@@ -8,7 +11,7 @@ public class Main {
 
         setConfig();
 
-        get("/hello", (req, res) -> "{\"message\": \"Hello World!\"}");
+        get("/hello", new HelloRoute());
     }
 
     private static void setConfig() {
