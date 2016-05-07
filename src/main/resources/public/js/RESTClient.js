@@ -1,15 +1,13 @@
-var url = "https://is-webserver.herokuapp.com/hello";
+var url = 'https://is-webserver.herokuapp.com/hello';
 
 $(document).ready(function () {
-    console.log("I'm ready!");
     $.ajax({
-        url: "https://is-webserver.herokuapp.com/hello",
+        url: url,
         type: "GET",
         dataType: "json",
 
         success: function (response) {
-            console.log("Success!");
-            console.log(response);
+            $('#hello-message').text(response.message);
         }
     })
 });
