@@ -1,6 +1,3 @@
-import helper.CorsFilter;
-import spark.Route;
-
 import java.util.Optional;
 
 import static spark.Spark.*;
