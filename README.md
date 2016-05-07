@@ -1,6 +1,6 @@
 # IS_WebServer
 
-   RESTService implementation made with @Azoga in the Systems Engineering subject using [Spark](http://sparkjava.com/)
+   RESTService implementation made with [@Azoga](https://github.com/Azoga) in the Systems Engineering subject using [Spark](http://sparkjava.com/)
 
 ## Heroku
 
