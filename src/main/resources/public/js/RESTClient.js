@@ -1,13 +1,11 @@
 var url = 'https://is-webserver.herokuapp.com/hello';
 
-$(document).ready(function () {
-    $.ajax({
-        url: url,
-        type: "GET",
-        dataType: "json",
+function updateHelloMessage() {
+    $.getJSON(url, function (response) {
+        $('#hello-message').text(response.message);
+    });
+}
 
-        success: function (response) {
-            $('#hello-message').text(response.message);
-        }
-    })
+$(document).ready(function () {
+    updateHelloMessage();
 });
