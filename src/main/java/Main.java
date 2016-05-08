@@ -1,3 +1,5 @@
+import is_server.JsonTransformer;
+
 import java.util.Optional;
 
 import static spark.Spark.*;
@@ -8,7 +10,8 @@ public class Main {
 
         setConfig();
 
-        get("/hello", new HelloRoute());
+        get("/hello", new HelloRoute(), new JsonTransformer());
+
     }
 
     private static void setConfig() {
