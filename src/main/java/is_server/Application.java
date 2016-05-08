@@ -1,8 +1,11 @@
 package is_server;
 
+import is_server.controller.HelloController;
+
 import java.util.Optional;
 
-import static spark.Spark.*;
+import static spark.Spark.port;
+import static spark.Spark.staticFileLocation;
 
 public class Application {
 
@@ -21,7 +24,7 @@ public class Application {
     }
 
     private void deploy() {
-        get("/hello", new HelloRoute());
+        new HelloController();
     }
 
     public static void main(String[] args) {

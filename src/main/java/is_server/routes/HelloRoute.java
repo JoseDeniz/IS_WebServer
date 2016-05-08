@@ -1,13 +1,13 @@
-package is_server;
+package is_server.routes;
 
 import is_server.helper.CorsFilter;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
-class HelloRoute implements Route {
+public class HelloRoute implements Route {
 
-    HelloRoute() {
+    public HelloRoute() {
         CorsFilter.apply();
     }
 
