@@ -6,6 +6,7 @@
     color: cornflowerblue;
 }
 
-p{
-    background-color: crimson;
+img{
+    max-width: 50%;
+    height: auto;
 }
