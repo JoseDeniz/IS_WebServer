@@ -1,6 +1,6 @@
 package is_server.controller;
 
-import is_server.routes.HelloRoute;
+import is_server.helper.CorsFilter;
 
 import static spark.Spark.get;
 
@@ -11,6 +11,7 @@ public class HelloController {
     }
 
     private void setRoute() {
-        get("/hello", new HelloRoute());
+        CorsFilter.apply();
+        get("/hello", (request, response) -> "{\"message\": \"Hello World!\"}");
     }
 }
