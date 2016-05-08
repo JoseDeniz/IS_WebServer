@@ -4,14 +4,10 @@ import java.util.Optional;
 
 import static spark.Spark.*;
 
-public class Main {
+public class Application {
 
-    public static void main(String[] args) {
-
+    public Application() {
         setConfig();
-
-        get("/hello", new HelloRoute());
-
     }
 
     private static void setConfig() {
@@ -22,6 +18,14 @@ public class Main {
     private static void setPort() {
         String port = System.getenv("PORT");
         port(Optional.ofNullable(port).map(Integer::valueOf).orElse(4567));
+    }
+
+    private void deploy() {
+        get("/hello", new HelloRoute());
+    }
+
+    public static void main(String[] args) {
+        new Application().deploy();
     }
 
 }
