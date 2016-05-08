@@ -12,10 +12,18 @@ public class TestRequest {
 
     private static final String LOCALHOST_URL = "http://localhost:4567";
 
+    public static TestResponse doPost(String route) {
+        return request("POST", route);
+    }
+
     public static TestResponse doGet(String route) {
+        return request("GET", route);
+    }
+
+    private static TestResponse request(String method, String route) {
         try {
             HttpURLConnection connection = getConnection(new URL(LOCALHOST_URL + route));
-            connection.setRequestMethod("GET");
+            connection.setRequestMethod(method);
             return getResponse(connection);
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,5 +41,4 @@ public class TestRequest {
         Integer status = connection.getResponseCode();
         return new TestResponse(status, body);
     }
-
 }
