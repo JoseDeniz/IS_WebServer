@@ -23,7 +23,7 @@ public class Application {
         port(Optional.ofNullable(port).map(Integer::valueOf).orElse(4567));
     }
 
-    private void deploy() {
+    public void deploy() {
         new HelloController();
     }
 
