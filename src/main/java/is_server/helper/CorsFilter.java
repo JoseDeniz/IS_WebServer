@@ -1,8 +1,5 @@
-package helper;
+package is_server.helper;
 
-import spark.Filter;
-import spark.Request;
-import spark.Response;
 import spark.Spark;
 
 import java.util.HashMap;

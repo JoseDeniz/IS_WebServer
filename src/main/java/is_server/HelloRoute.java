@@ -1,4 +1,6 @@
-import helper.CorsFilter;
+package is_server;
+
+import is_server.helper.CorsFilter;
 import spark.Request;
 import spark.Response;
 import spark.Route;

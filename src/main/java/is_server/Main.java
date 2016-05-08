@@ -1,4 +1,4 @@
-import is_server.JsonTransformer;
+package is_server;
 
 import java.util.Optional;
 
@@ -10,7 +10,7 @@ public class Main {
 
         setConfig();
 
-        get("/hello", new HelloRoute(), new JsonTransformer());
+        get("/hello", new HelloRoute());
 
     }
 
