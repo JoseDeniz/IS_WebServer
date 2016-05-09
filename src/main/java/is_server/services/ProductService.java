@@ -15,7 +15,7 @@ public class ProductService {
     private static Integer productId;
 
     public ProductService() {
-        productId = 0;
+        productId = 1;
         products = new HashMap<>();
     }
 
