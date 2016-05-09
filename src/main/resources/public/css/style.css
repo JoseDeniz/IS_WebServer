@@ -7,8 +7,9 @@
 }
 
 img{
-    max-width: 50%;
+    max-width: 40%;
     height: auto;
+    float: right;
 }
 
 .spacing{
