@@ -22,6 +22,15 @@ function updateProductList() {
     });
 }
 
+function newProduct(request) {
+    // request deberia ser algo como : {name: foo, price=100}
+    // coger los parametros de la peticion post  ej: req['name']
+    // hacer una peticion post AJAX con la url: url + '/products?name=name&price=price'
+    // (no es necesario tratar la respuesta) la respuesta de la peticion ajax es del estilo: {id:1, name:foo, price:100}
+    console.log(request);
+    //crear producto
+    // refresh()
+}
 
 $(document).ready(function () {
     updateHelloMessage();
