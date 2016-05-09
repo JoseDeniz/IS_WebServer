@@ -22,4 +22,8 @@ public class TestResponse {
     public Integer status() {
         return status;
     }
+
+    public String body() {
+        return body;
+    }
 }

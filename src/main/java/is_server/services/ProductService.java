@@ -4,9 +4,10 @@ import is_server.helper.ProductResponseError;
 import is_server.model.Product;
 import spark.Request;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.lang.Double.parseDouble;
 
 public class ProductService {
 
@@ -21,7 +22,7 @@ public class ProductService {
     public Product createProduct(Request request) {
         Product product = new Product(productId++,
                                       request.queryParams("name"),
-                                      request.queryParams("price"));
+                                      parseDouble(request.queryParams("price")));
 
         return persist(product);
     }
@@ -34,7 +35,7 @@ public class ProductService {
         return new ProductResponseError("The product %d already exists", product.getId());
     }
 
-    public Collection<Product> getAllProducts() {
-        return products.values();
+    public Map<Integer, Product> getAllProducts() {
+        return products;
     }
 }

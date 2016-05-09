@@ -1,9 +1,10 @@
 package is_server.controller;
 
 import is_server.Application;
+import is_server.model.Product;
 import is_server.test_helper.TestResponse;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import spark.Spark;
 
@@ -20,14 +21,14 @@ import static spark.Spark.awaitInitialization;
 
 public class ProductControllerTest {
 
-    @BeforeClass
-    public static void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
         new Application().deploy();
         awaitInitialization();
     }
 
-    @AfterClass
-    public static void tearDown() throws Exception {
+    @After
+    public void tearDown() throws Exception {
         Spark.stop();
     }
 
@@ -49,8 +50,24 @@ public class ProductControllerTest {
 
         assertThat(response.status(), is(200));
         assertThat(map.get("name"), is("foo"));
-        assertThat(map.get("price"), is("100"));
+        assertThat(map.get("price"), is(100.0));
         assertThat(map.get("id"), is(notNullValue()));
+    }
+
+    @Test
+    public void
+    should_return_a_collection_with_one_element_when_there_is_only_one_product() throws IOException {
+
+        doPost("/products?name=foo&price=100");
+
+        TestResponse response = doGet("/products");
+        Map<String, Object> map = response.jsonToMap();
+        Product product = new Product(0, "foo", 100.0);
+
+        assertThat(response.status(), is(200));
+        assertThat(map.values().size(), is(1));
+        // FIXME I'm working correctly but this assert is red
+        assertThat(map.values(), is(product.toString()));
     }
 
 }

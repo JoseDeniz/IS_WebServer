@@ -4,12 +4,12 @@ public class Product {
 
     private Integer id;
     private String name;
-    private String price;
+    private Double price;
 
     protected Product() {
     }
 
-    public Product(Integer id, String name, String price) {
+    public Product(Integer id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -23,7 +23,7 @@ public class Product {
         return name;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 }
