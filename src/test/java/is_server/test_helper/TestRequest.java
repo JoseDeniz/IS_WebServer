@@ -1,12 +1,11 @@
 package is_server.test_helper;
 
+import javaslang.control.Try;
 import spark.utils.IOUtils;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-import static org.junit.Assert.fail;
 
 public class TestRequest {
 
@@ -21,15 +20,11 @@ public class TestRequest {
     }
 
     private static TestResponse request(String method, String route) {
-        try {
-            HttpURLConnection connection = getConnection(new URL(LOCALHOST_URL + route));
-            connection.setRequestMethod(method);
-            return getResponse(connection);
-        } catch (IOException e) {
-            e.printStackTrace();
-            fail("Sending request failed: " + e.getMessage());
-            return null;
-        }
+        return Try.of(() -> getConnection(new URL(LOCALHOST_URL + route)))
+                  .andThenTry(urlConnection -> urlConnection.setRequestMethod(method))
+                  .mapTry(TestRequest::getResponse)
+                  .onFailure(Throwable::getMessage)
+                  .getOrElse(() -> null);
     }
 
     private static HttpURLConnection getConnection(URL url) throws IOException {
