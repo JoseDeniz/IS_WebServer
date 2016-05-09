@@ -26,4 +26,14 @@ public class Product {
     public Double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{" +
+                "id=%.1f, " +
+                "name=%s, " +
+                "price=%.1f" +
+                "}",
+                id.floatValue(), name, price);
+    }
 }

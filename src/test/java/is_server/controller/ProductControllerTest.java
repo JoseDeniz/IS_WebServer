@@ -66,8 +66,7 @@ public class ProductControllerTest {
 
         assertThat(response.status(), is(200));
         assertThat(map.values().size(), is(1));
-        // FIXME I'm working correctly but this assert is red
-        assertThat(map.values(), is(product.toString()));
+        assertThat(map.values().toArray()[0].toString(), is(product.toString()));
     }
 
 }
