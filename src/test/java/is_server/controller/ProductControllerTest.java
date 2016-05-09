@@ -45,7 +45,7 @@ public class ProductControllerTest {
     @Test
     public void
     should_create_a_product_with_name_foo_and_price_100() throws IOException {
-        TestResponse response = doPost("/products?name=foo&price=100");
+        TestResponse response = createAProduct();
         Map<String, Object> map = response.jsonToMap();
 
         assertStatusOK(response);
@@ -58,9 +58,9 @@ public class ProductControllerTest {
     public void
     should_not_create_a_product_with__same_name() throws IOException {
 
-        doPost("/products?name=foo&price=100");
+        createAProduct();
 
-        TestResponse response = doPost("/products?name=foo&price=100");
+        TestResponse response = createAProduct();
         Map<String, Object> map = response.jsonToMap();
 
         assertStatusOK(response);
@@ -71,7 +71,7 @@ public class ProductControllerTest {
     public void
     should_return_a_collection_with_one_element_when_there_is_only_one_product() throws IOException {
 
-        doPost("/products?name=foo&price=100");
+        createAProduct();
 
         TestResponse response = doGet("/products");
         Map<String, Object> map = response.jsonToMap();
@@ -86,7 +86,7 @@ public class ProductControllerTest {
     public void
     should_return_a_product_doing_a_get_request_by_its_id() throws IOException {
 
-        doPost("/products?name=foo&price=100");
+        createAProduct();
 
         TestResponse response = doGet("/products/1");
         Map<String, Object> map = response.jsonToMap();
@@ -95,6 +95,10 @@ public class ProductControllerTest {
         assertThat(map.get("name"), is("foo"));
         assertThat(map.get("price"), is(100.0));
         assertThat(map.get("id"), is(notNullValue()));
+    }
+
+    private TestResponse createAProduct() {
+        return doPost("/products?name=foo&price=100");
     }
 
     private void assertStatusOK(TestResponse response) {
