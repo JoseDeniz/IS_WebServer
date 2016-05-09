@@ -2,6 +2,7 @@ package is_server;
 
 import is_server.controller.HelloController;
 import is_server.controller.ProductController;
+import is_server.persistence.HashMapRepository;
 import is_server.services.ProductService;
 
 import java.util.Optional;
@@ -27,7 +28,7 @@ public class Application {
 
     public void deploy() {
         new HelloController();
-        new ProductController(new ProductService());
+        new ProductController(new ProductService(new HashMapRepository()));
     }
 
     public static void main(String[] args) {
