@@ -9,4 +9,12 @@
 ## Routes:
     
    * GET("/hello"): returns a Hello World! message
-      
+   
+   * POST("/products"): creates a new product
+   
+   * GET("/products"): returns a list of available products
+
+## Future improvements:
+
+   * Implement a view using [bootstrap](http://getbootstrap.com/)
+   * Refactor using [javaslang](http://www.javaslang.io/)
