@@ -10,3 +10,8 @@ img{
     max-width: 50%;
     height: auto;
 }
+
+.spacing{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
