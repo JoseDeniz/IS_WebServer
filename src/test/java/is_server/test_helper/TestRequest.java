@@ -24,7 +24,7 @@ public class TestRequest {
                   .andThenTry(urlConnection -> urlConnection.setRequestMethod(method))
                   .mapTry(TestRequest::getResponse)
                   .onFailure(Throwable::getMessage)
-                  .getOrElse(() -> null);
+                  .get();
     }
 
     private static HttpURLConnection getConnection(URL url) throws IOException {
