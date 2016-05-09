@@ -14,7 +14,7 @@
         <link href="css/dashboard.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <script src="js/jquery-2.2.3.min.js"></script>
-        <script src="js/RESTClient.js"></script>
+        <script src="js/app.js"></script>
     </head>
 
     <body>
@@ -58,7 +58,7 @@
                 <!--   SUBTÍTULO   -->
 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 id="hello-message" class="page-header">Teeesting testing~</h1>
+                    <h1 id="hello-message" class="page-header"></h1>
 
                     <!--   TABLA   -->
 
@@ -73,104 +73,7 @@
                                 <th><!--A picture for each product should go on this column--></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>1,001</td>
-                                <td>Lorem</td>
-                                <td>dolor</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,002</td>
-                                <td>amet</td>
-                                <td>adipiscing</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>Integer</td>
-                                <td>odio</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,003</td>
-                                <td>libero</td>
-                                <td>cursus</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,004</td>
-                                <td>dapibus</td>
-                                <td>Sed</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,005</td>
-                                <td>Nulla</td>
-                                <td>sem</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,006</td>
-                                <td>nibh</td>
-                                <td>imperdiet</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,007</td>
-                                <td>sagittis</td>
-                                <td>Praesent</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,008</td>
-                                <td>Fusce</td>
-                                <td>tellus</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,009</td>
-                                <td>augue</td>
-                                <td>porta</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,010</td>
-                                <td>massa</td>
-                                <td>lacinia</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,011</td>
-                                <td>eget</td>
-                                <td>Class</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,012</td>
-                                <td>taciti</td>
-                                <td>ad</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,013</td>
-                                <td>torquent</td>
-                                <td>conubia</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,014</td>
-                                <td>per</td>
-                                <td>himenaeos</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            <tr>
-                                <td>1,015</td>
-                                <td>sodales</td>
-                                <td>in</td>
-                                <td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>
-                            </tr>
-                            </tbody>
+                            <tbody id="product-list"></tbody>
                         </table>
                     </div>
                 </div>
