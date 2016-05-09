@@ -56,6 +56,19 @@ public class ProductControllerTest {
 
     @Test
     public void
+    should_not_create_a_product_with__same_name() throws IOException {
+
+        doPost("/products?name=foo&price=100");
+
+        TestResponse response = doPost("/products?name=foo&price=100");
+        Map<String, Object> map = response.jsonToMap();
+
+        assertStatusOK(response);
+        assertThat(map.get("message"), is("The product with name foo already exists"));
+    }
+
+    @Test
+    public void
     should_return_a_collection_with_one_element_when_there_is_only_one_product() throws IOException {
 
         doPost("/products?name=foo&price=100");
