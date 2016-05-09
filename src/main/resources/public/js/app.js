@@ -23,14 +23,35 @@ function updateProductList() {
 }
 
 function newProduct(request) {
-    // request deberia ser algo como : {name: foo, price=100}
-    // coger los parametros de la peticion post  ej: req['name']
-    // hacer una peticion post AJAX con la url: url + '/products?name=name&price=price'
-    // (no es necesario tratar la respuesta) la respuesta de la peticion ajax es del estilo: {id:1, name:foo, price:100}
-    console.log(request);
-    //crear producto
-    // refresh()
+    var jsonRequest = convertFormToJSON(request);
+    var newProductName = jsonRequest.name;
+    var newProductPrice = jsonRequest.price;
+    var fullUrl = url + '/products?name=' + newProductName + '&price=' + newProductPrice;
+    $.post(fullUrl, jsonRequest, function(response){
+        var element = '<tr>' +
+            '<td>' + response.id + '</td>' +
+            '<td>' + response.name + '</td>' +
+            '<td>' + response.price + '</td>' +
+            '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
+            '</tr>';
+        $('#product-list').append(element);
+        refresh();
+    });
 }
+
+function refresh() {
+    location.reload(true);
+}
+
+function convertFormToJSON(form){
+    var array = jQuery(form).serializeArray();
+    var json = {};
+    jQuery.each(array, function() {
+        json[this.name] = this.value || '';
+    });
+    return json;
+}
+
 
 $(document).ready(function () {
     updateHelloMessage();

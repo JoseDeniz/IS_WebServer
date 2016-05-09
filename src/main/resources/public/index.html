@@ -43,12 +43,6 @@
 
         <div class="container-fluid">
 
-            <form action="javascript:newProduct();" method="POST" style="float: right">
-                Name: <input type="text" name="name">
-                Price: <input type="number" name="price">
-                <input type="submit" value="submit">
-            </form>
-
             <div class="row">
 
                 <!--   SIDEBAR   -->
@@ -70,6 +64,14 @@
                     <!--   TABLA   -->
 
                     <h2 class="sub-header">Catálogo</h2>
+                    <div align="right">
+                        <form name="newProductForm" action="javascript:newProduct(document.forms.newProductForm);" method="POST">
+                            Name: <input type="text" name="name">
+                            Price: <input type="number" name="price">
+                            <input type="submit" value="submit">
+                        </form>
+                    </div>
+                    
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
