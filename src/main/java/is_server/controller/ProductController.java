@@ -1,5 +1,6 @@
 package is_server.controller;
 
+import is_server.helper.CorsFilter;
 import is_server.helper.JsonTransformer;
 import is_server.services.ProductService;
 
@@ -18,11 +19,10 @@ public class ProductController {
     }
 
     private void setRoutes() {
-
+        CorsFilter.apply();
         get("/products", (request, response) -> productService.getAllProducts(), jsonTransformer);
         post("/products", (request, response) -> productService.createProduct(request), jsonTransformer);
-        get("/products/:id", (request, response) ->
-                productService.getProductById(request.params("id")), jsonTransformer);
+        get("/products/:id", (request, response) -> productService.getProductById(request.params("id")), jsonTransformer);
 
     }
 
