@@ -4,6 +4,7 @@ import is_server.helper.ProductResponseError;
 import is_server.model.Product;
 import spark.Request;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,5 +32,9 @@ public class ProductService {
             return product;
         }
         return new ProductResponseError("The product %d already exists", product.getId());
+    }
+
+    public Collection<Product> getAllProducts() {
+        return products.values();
     }
 }
