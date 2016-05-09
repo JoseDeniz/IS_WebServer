@@ -19,3 +19,4 @@
 ## Future improvements:
 
    * Implement a view using [bootstrap](http://getbootstrap.com/)
+   * Use postresql as DB
