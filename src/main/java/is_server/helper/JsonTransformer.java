@@ -1,9 +1,9 @@
-package is_server;
+package is_server.helper;
 
 import com.google.gson.Gson;
 import spark.ResponseTransformer;
 
-public class JsonTransformer implements ResponseTransformer {
+public final class JsonTransformer implements ResponseTransformer {
 
     private final Gson gson;
 

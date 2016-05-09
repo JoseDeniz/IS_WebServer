@@ -1,6 +1,6 @@
 package is_server.controller;
 
-import is_server.JsonTransformer;
+import is_server.helper.JsonTransformer;
 import is_server.services.ProductService;
 
 import static spark.Spark.get;
