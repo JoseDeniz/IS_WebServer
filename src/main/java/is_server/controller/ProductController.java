@@ -21,6 +21,8 @@ public class ProductController {
 
         get("/products", (request, response) -> productService.getAllProducts(), jsonTransformer);
         post("/products", (request, response) -> productService.createProduct(request), jsonTransformer);
+        get("/products/:id", (request, response) ->
+                productService.getProductById(request.params("id")), jsonTransformer);
 
     }
 

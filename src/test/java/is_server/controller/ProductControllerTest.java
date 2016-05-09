@@ -62,11 +62,26 @@ public class ProductControllerTest {
 
         TestResponse response = doGet("/products");
         Map<String, Object> map = response.jsonToMap();
-        Product product = new Product(0, "foo", 100.0);
+        Product product = new Product(1, "foo", 100.0);
 
         assertStatusOK(response);
         assertThat(map.values().size(), is(1));
         assertThat(map.values().toArray()[0].toString(), is(product.toString()));
+    }
+
+    @Test
+    public void
+    should_return_a_product_doing_a_get_request_by_its_id() throws IOException {
+
+        doPost("/products?name=foo&price=100");
+
+        TestResponse response = doGet("/products/1");
+        Map<String, Object> map = response.jsonToMap();
+
+        assertStatusOK(response);
+        assertThat(map.get("name"), is("foo"));
+        assertThat(map.get("price"), is(100.0));
+        assertThat(map.get("id"), is(notNullValue()));
     }
 
     private void assertStatusOK(TestResponse response) {

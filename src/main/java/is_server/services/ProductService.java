@@ -6,8 +6,11 @@ import spark.Request;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+import static java.lang.String.valueOf;
 
 public class ProductService {
 
@@ -32,10 +35,15 @@ public class ProductService {
             products.put(product.getId(), product);
             return product;
         }
-        return new ProductResponseError("The product %d already exists", product.getId());
+        return new ProductResponseError("The product with id %s already exists", valueOf(product.getId()));
     }
 
     public Map<Integer, Product> getAllProducts() {
         return products;
+    }
+
+    public Product getProductById(String id) {
+        return Optional.ofNullable(products.get(parseInt(id)))
+                .orElse(new ProductResponseError("The product with id %s does not exists", id));
     }
 }
