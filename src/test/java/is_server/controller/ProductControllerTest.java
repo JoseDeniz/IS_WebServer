@@ -38,7 +38,7 @@ public class ProductControllerTest {
         TestResponse response = doGet("/products");
         Map<String, Object> map = response.jsonToMap();
 
-        assertThat(response.status(), is(200));
+        assertStatusOK(response);
         assertThat(map, is(emptyMap()));
     }
 
@@ -48,7 +48,7 @@ public class ProductControllerTest {
         TestResponse response = doPost("/products?name=foo&price=100");
         Map<String, Object> map = response.jsonToMap();
 
-        assertThat(response.status(), is(200));
+        assertStatusOK(response);
         assertThat(map.get("name"), is("foo"));
         assertThat(map.get("price"), is(100.0));
         assertThat(map.get("id"), is(notNullValue()));
@@ -64,9 +64,13 @@ public class ProductControllerTest {
         Map<String, Object> map = response.jsonToMap();
         Product product = new Product(0, "foo", 100.0);
 
-        assertThat(response.status(), is(200));
+        assertStatusOK(response);
         assertThat(map.values().size(), is(1));
         assertThat(map.values().toArray()[0].toString(), is(product.toString()));
+    }
+
+    private void assertStatusOK(TestResponse response) {
+        assertThat(response.status(), is(200));
     }
 
 }
