@@ -1,6 +1,6 @@
 package is_server.services;
 
-import is_server.helper.ProductResponseError;
+import is_server.helper.ProductErrorResponse;
 import is_server.model.Product;
 import spark.Request;
 
@@ -35,7 +35,7 @@ public class ProductService {
             products.put(product.getId(), product);
             return product;
         }
-        return new ProductResponseError("The product with id %s already exists", valueOf(product.getId()));
+        return new ProductErrorResponse("The product with id %s already exists", valueOf(product.getId()));
     }
 
     public Map<Integer, Product> getAllProducts() {
@@ -44,6 +44,6 @@ public class ProductService {
 
     public Product getProductById(String id) {
         return Optional.ofNullable(products.get(parseInt(id)))
-                .orElse(new ProductResponseError("The product with id %s does not exists", id));
+                .orElse(new ProductErrorResponse("The product with id %s does not exists", id));
     }
 }
