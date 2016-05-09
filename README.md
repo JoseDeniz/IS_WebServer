@@ -19,4 +19,3 @@
 ## Future improvements:
 
    * Implement a view using [bootstrap](http://getbootstrap.com/)
-   * Refactor using [javaslang](http://www.javaslang.io/)
