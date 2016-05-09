@@ -13,6 +13,8 @@
    * POST("/products"): creates a new product
    
    * GET("/products"): returns a list of available products
+   
+   * GET("/products/:id"): returns a specific product
 
 ## Future improvements:
 
