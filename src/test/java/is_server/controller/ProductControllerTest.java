@@ -97,6 +97,16 @@ public class ProductControllerTest {
         assertThat(map.get("id"), is(notNullValue()));
     }
 
+    @Test
+    public void
+    should_return_an_error_response_when_a_product_does_not_exists() throws IOException {
+        TestResponse response = doGet("/products/1");
+        Map<String, Object> map = response.jsonToMap();
+
+        assertStatusOK(response);
+        assertThat(map.get("message"), is("The product with id 1 does not exists"));
+    }
+
     private TestResponse createAProduct() {
         return doPost("/products?name=foo&price=100");
     }
