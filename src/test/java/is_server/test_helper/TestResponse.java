@@ -1,7 +1,6 @@
 package is_server.test_helper;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import is_server.helper.JSONToMap;
 
 import java.util.Map;
 
@@ -13,10 +12,10 @@ public class TestResponse {
     TestResponse(Integer status, String body) {
         this.status = status;
         this.body = body;
-    }
+    }u
 
     public Map<String, Object> jsonToMap() {
-        return new Gson().fromJson(body, new TypeToken<Map<String, Object>>(){}.getType());
+        return JSONToMap.fromJson(body);
     }
 
     public Integer status() {
