@@ -17,9 +17,11 @@ function updateProductList() {
                 '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
                 '</tr>';
             $('#product-list').append(element);
+            //  PLEASE TEST THIS!!!
             element = '<option value=' + response[i].id +
                 '>' + response[i].id + '</option>';
             $('#id-list-for-select').append(element);
+            // PLEASE TEST THIS!!!
             i++;
         });
     });
@@ -35,7 +37,7 @@ function newProduct(request) {
         var element = '<tr>' +
             '<td>' + response.id + '</td>' +
             '<td>' + response.name + '</td>' +
-            '<td>' + response.price + '</td>' +
+            '<td>' + response.price + ' \€' + '</td>' +
             '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
             '</tr>';
         $('#product-list').append(element);
@@ -45,12 +47,14 @@ function newProduct(request) {
 }
 
 function editProduct(newAttributes){
+    //  PLEASE TEST THIS!!!
     var jsonNewAttributes = convertFormToJSON(newAttributes);
     var fullUrl = url + '/products/:' + jsonNewAttributes.id;
     delete jsonNewAttributes.id;
     $.post(fullUrl, jsonNewAttributes, function(){
         refresh();
     });
+    // PLEASE TEST THIS!!!
 }
 
 function refresh() {
@@ -65,7 +69,6 @@ function convertFormToJSON(form){
     });
     return json;
 }
-
 
 $(document).ready(function () {
     updateHelloMessage();

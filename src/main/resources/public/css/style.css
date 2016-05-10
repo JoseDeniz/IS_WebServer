@@ -108,12 +108,13 @@ label{
     text-align: left;
 }
 
-input[type="submit"]:not([class="edit-product-input"]){
+input[type="submit"]:not([class*="edit-product-input"]){
     border: solid rgb(66,139,202);
     border-radius: 10px;
+    background-color: rgb(196,213,228);
 }
 
-input:not([class="edit-product-input"]){
+input:not([class*="edit-product-input"]){
     display: inline-block;
     border: solid 1px cornflowerblue;
     background-color: rgb(245,245,245);
@@ -136,6 +137,4 @@ input[type="number"]:not([class="edit-product-input"]){
 }
 
 #id-list-for-select{
-    size: 5;
-
 }
