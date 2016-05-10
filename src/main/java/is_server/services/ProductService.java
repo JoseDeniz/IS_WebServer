@@ -22,9 +22,8 @@ public class ProductService {
 
     public Product createProduct(Request request) {
         Product product = new Product(productId++,
-                                      request.queryParams("name"),
-                                      parseDouble(request.queryParams("price")));
-
+                                      getNameFrom(request),
+                                      parsePrice(request.queryParams("price")));
         return productRepository.add(product);
     }
 
@@ -46,4 +45,13 @@ public class ProductService {
     private Integer getIdFrom(Request request) {
         return parseInt(request.params("id"));
     }
+
+    private String getNameFrom(Request request) {
+        return request.queryParams("name");
+    }
+
+    private double parsePrice(String price) {
+        return parseDouble(price);
+    }
+
 }
