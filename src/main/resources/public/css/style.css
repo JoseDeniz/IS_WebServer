@@ -4,6 +4,7 @@
 
 #hello-message{
     color: cornflowerblue;
+    margin-top: 30px;
 }
 
 img{
@@ -107,21 +108,30 @@ label{
     text-align: left;
 }
 
-input[type="submit"]{
+input[type="submit"]:not([class="edit-product-input"]){
     border: solid rgb(66,139,202);
     border-radius: 10px;
 }
 
-input{
+input:not([class="edit-product-input"]){
     display: inline-block;
     border: solid 1px cornflowerblue;
     background-color: rgb(245,245,245);
     text-align: right;
 }
 
-input[type="number"]{
+input[type="number"]:not([class="edit-product-input"]){
     display: inline-block;
     -moz-appearance: textfield;
     width: 65px;
     text-align: right;
+}
+
+.new-product-form{
+    float:right;
+}
+
+
+.edit-product-form{
+    float: left;
 }

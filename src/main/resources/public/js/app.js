@@ -41,6 +41,15 @@ function newProduct(request) {
     });
 }
 
+function editProduct(newAttributes){
+    var jsonNewAttributes = convertFormToJSON(newAttributes);
+    var fullUrl = url + '/products/:' + jsonNewAttributes.id;
+    delete jsonNewAttributes.id;
+    $.post(fullUrl, jsonNewAttributes, function(){
+        refresh();
+    });
+}
+
 function refresh() {
     location.reload(true);
 }

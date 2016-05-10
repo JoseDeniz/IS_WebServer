@@ -57,12 +57,21 @@
                     </div>
 
                     <!--   FORMULARIO   -->
-                    <div class="left-spacing" align="left">
+                    <div class="left-spacing new-product-form" align="left">
                         <h4>Añadir nuevo producto:</h4>
-                        <form class="spacing" name="newProductForm" action="javascript:newProduct(document.forms.newProductForm);" method="POST">
+                        <form class="spacing form" name="newProductForm" action="javascript:newProduct(document.forms.newProductForm);" method="POST">
                             <label>Nombre:</label> <input class="spacing" type="text" name="name"><br>
                             <label>Precio:</label> <input class="spacing" type="number" name="price"><br>
                             <input class="spacing" type="submit" value="Añadir">
+                        </form>
+                    </div>
+                    <div class="left-spacing edit-product-form" align="left">
+                        <h4>Modificar producto existente:</h4>
+                        <form class="spacing" name="editProductForm" action="javascript:editProduct(document.forms.editProductForm);" method="POST">
+                            <label>ID:</label> <input class="spacing" type="number" name="id"><br>
+                            <label>Nombre:</label> <input class="spacing" type="text" name="name"><br>
+                            <label>Precio:</label> <input class="spacing" type="number" name="price"><br>
+                            <input class="spacing" type="submit" value="Modificar">
                         </form>
                     </div>
                 </div>
