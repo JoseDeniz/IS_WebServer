@@ -13,6 +13,7 @@ import java.util.function.Predicate;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static java.lang.String.valueOf;
+import static java.util.Collections.unmodifiableMap;
 
 public class ProductRepository implements Repository<Product> {
 
@@ -53,13 +54,13 @@ public class ProductRepository implements Repository<Product> {
 
     @Override
     public Map<Integer, Product> findAll() {
-        return products;
+        return unmodifiableMap(products);
     }
 
     @Override
     public Product findById(int id) {
         return Optional.ofNullable(products.get(id))
-                .orElse(productMessageResponse("The product with id %s does not exists", valueOf(id)));
+                    .orElse(productMessageResponse("The product with id %s does not exists", valueOf(id)));
     }
 
     @Override
