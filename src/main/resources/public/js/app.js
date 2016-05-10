@@ -17,6 +17,9 @@ function updateProductList() {
                 '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
                 '</tr>';
             $('#product-list').append(element);
+            element = '<option value=' + response[i].id +
+                '>' + response[i].id + '</option>';
+            $('#id-list-for-select').append(element);
             i++;
         });
     });

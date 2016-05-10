@@ -128,10 +128,14 @@ input[type="number"]:not([class="edit-product-input"]){
 }
 
 .new-product-form{
-    float:right;
+    float:left;
 }
-
 
 .edit-product-form{
     float: left;
+}
+
+#id-list-for-select{
+    size: 5;
+
 }

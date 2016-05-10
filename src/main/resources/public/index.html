@@ -67,12 +67,13 @@
                     </div>
                     <div class="left-spacing edit-product-form" align="left">
                         <h4>Modificar producto existente:</h4>
-                        <form class="spacing" name="editProductForm" action="javascript:editProduct(document.forms.editProductForm);" method="POST">
-                            <label>ID:</label> <input class="spacing" type="number" name="id"><br>
+                        <form class="spacing" id="editForm" name="editProductForm" action="javascript:editProduct(document.forms.editProductForm);"  method="POST">
+                            <label>ID:</label> <select required id="id-list-for-select" name="id-list" form="editForm"></select><br>
                             <label>Nombre:</label> <input class="spacing" type="text" name="name"><br>
                             <label>Precio:</label> <input class="spacing" type="number" name="price"><br>
                             <input class="spacing" type="submit" value="Modificar">
                         </form>
+
                     </div>
                 </div>
             </div>
