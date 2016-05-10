@@ -4,8 +4,7 @@ import is_server.helper.CorsFilter;
 import is_server.helper.JsonTransformer;
 import is_server.services.ProductService;
 
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 public class ProductController {
 
@@ -16,6 +15,7 @@ public class ProductController {
         this.productService = productService;
         this.jsonTransformer = new JsonTransformer();
         setRoutes();
+        after((request, response) -> response.type("application/json"));
     }
 
     private void setRoutes() {
