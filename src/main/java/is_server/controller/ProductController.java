@@ -22,7 +22,7 @@ public class ProductController {
         CorsFilter.apply();
         get("/products", (request, response) -> productService.getAllProducts(), jsonTransformer);
         post("/products", (request, response) -> productService.createProduct(request), jsonTransformer);
-        get("/products/:id", (request, response) -> productService.getProductById(request.params("id")), jsonTransformer);
+        get("/products/:id", (request, response) -> productService.getProductById(request), jsonTransformer);
         put("/products/:id", (request, response) -> productService.updateProduct(request), jsonTransformer);
     }
 

@@ -31,8 +31,9 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product getProductById(String id) {
-        return productRepository.findById(parseInt(id));
+    public Product getProductById(Request request) {
+        return productRepository.findById(getIdFrom(request));
+    }
 
     public Product updateProduct(Request request) {
         Map<String, Object> map = JSONToMap.fromJson(request.body());
