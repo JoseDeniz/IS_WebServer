@@ -108,7 +108,7 @@ public class ProductControllerTest {
 
     @Test
     public void
-    should_return_modify_a_product_when_a_put_request_is_sent() throws IOException {
+    should_modify_a_product_when_a_put_request_is_sent() throws IOException {
 
         createAProduct();
 
