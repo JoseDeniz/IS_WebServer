@@ -45,6 +45,16 @@ public class HashMapRepository implements Repository<Product> {
                 .orElse(productErrorResponse("The product with id %s does not exists", valueOf(id)));
     }
 
+    @Override
+    public Product update(Product product) {
+        Integer productId = product.getId();
+        if (products.get(productId) == null) {
+            return productErrorResponse("The product with id %s does not exists", valueOf(productId));
+        }
+        products.put(productId, product);
+        return products.get(productId);
+    }
+
     private ProductErrorResponse productErrorResponse(String message, String name) {
         return new ProductErrorResponse(message, name);
     }

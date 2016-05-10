@@ -1,5 +1,6 @@
 package is_server.services;
 
+import is_server.helper.JSONToMap;
 import is_server.model.Product;
 import is_server.persistence.Repository;
 import spark.Request;
@@ -33,5 +34,16 @@ public class ProductService {
 
     public Product getProductById(String id) {
         return productRepository.findById(parseInt(id));
+
+    public Product updateProduct(Request request) {
+        Map<String, Object> map = JSONToMap.fromJson(request.body());
+        Product product = new Product(getIdFrom(request),
+                                     (String) map.get("name"),
+                                     (Double) map.get("price"));
+        return productRepository.update(product);
+    }
+
+    private Integer getIdFrom(Request request) {
+        return parseInt(request.params("id"));
     }
 }

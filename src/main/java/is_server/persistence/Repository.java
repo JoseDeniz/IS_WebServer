@@ -10,4 +10,5 @@ public interface Repository<T> {
 
     T findById(int id);
 
+    T update(T object);
 }

@@ -11,8 +11,7 @@ import spark.Spark;
 import java.io.IOException;
 import java.util.Map;
 
-import static is_server.test_helper.TestRequest.doGet;
-import static is_server.test_helper.TestRequest.doPost;
+import static is_server.test_helper.TestRequest.*;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -105,6 +104,30 @@ public class ProductControllerTest {
 
         assertStatusOK(response);
         assertThat(map.get("message"), is("The product with id 1 does not exists"));
+    }
+
+    @Test
+    public void
+    should_return_modify_a_product_when_a_put_request_is_sent() throws IOException {
+
+        createAProduct();
+
+        TestResponse beforePutResponse = doGet("/products/1");
+        Map<String, Object> beforePutMap = beforePutResponse.jsonToMap();
+
+        assertStatusOK(beforePutResponse);
+        assertThat(beforePutMap.get("name"), is("foo"));
+        assertThat(beforePutMap.get("price"), is(100.0));
+        assertThat(beforePutMap.get("id"), is(notNullValue()));
+
+        TestResponse afterPutResponse = doPut("/products/1", "{\"name\":\"bar\", \"price\":200}");
+        Map<String, Object> afterPutMap = afterPutResponse.jsonToMap();
+
+        assertStatusOK(afterPutResponse);
+        assertStatusOK(afterPutResponse);
+        assertThat(afterPutMap.get("name"), is("bar"));
+        assertThat(afterPutMap.get("price"), is(200.0));
+        assertThat(afterPutMap.get("id"), is(notNullValue()));
     }
 
     private TestResponse createAProduct() {
