@@ -28,23 +28,11 @@ function updateProductList() {
 }
 
 function newProduct(request) {
-
     var jsonRequest = convertFormToJSON(request);
     var newProductName = jsonRequest.name;
     var newProductPrice = jsonRequest.price;
     var fullUrl = url + '/products?name=' + newProductName + '&price=' + newProductPrice;
-    $.post(fullUrl, jsonRequest, function(response){
-        //Change this, you are updating the list 2 times
-        var element = '<tr>' +
-            '<td>' + response.id + '</td>' +
-            '<td>' + response.name + '</td>' +
-            '<td>' + response.price + ' \€' + '</td>' +
-            '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
-            '</tr>';
-        $('#product-list').append(element);
-        // hasta aquí
-        refresh();
-    });
+    $.post(fullUrl, jsonRequest, function(response){ refresh(); });
 }
 
 function editProduct(newAttributes){
