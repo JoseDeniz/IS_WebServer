@@ -22,8 +22,12 @@ public class TestRequest {
 
     public static TestResponse doPut(String route, String body) {
         return request(connection("PUT", route)
-                        .andThen(c -> c.setDoOutput(true))
+                        .andThen(connection -> connection.setDoOutput(true))
                         .andThenTry(connection -> attachBody(connection, body)));
+    }
+
+    public static TestResponse doDelete(String route) {
+        return request(connection("DELETE", route));
     }
 
     private static TestResponse request(Try<HttpURLConnection> connection) {

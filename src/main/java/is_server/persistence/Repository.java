@@ -13,4 +13,7 @@ public interface Repository<T> {
     T findById(int id);
 
     T update(Request request);
+
+    T delete(Request request);
+
 }

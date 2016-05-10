@@ -26,17 +26,17 @@ public class ProductRepository implements Repository<Product> {
 
     @Override
     public Product add(Request request) {
-        if (isAnyProductWithSameName(getNameFrom(request))) {
-            return productErrorResponse("The product with name %s already exists", getNameFrom(request));
+        if (isAnyProductWithSameName(getNameFromRequest(request))) {
+            return productMessageResponse("The product with name %s already exists", getNameFromRequest(request));
         }
         Product product = product(++productId,
-                                  getNameFrom(request),
+                                  getNameFromRequest(request),
                                   parsePrice(request.queryParams("price")));
         products.put(productId, product);
         return products.get(productId);
     }
 
-    private String getNameFrom(Request request) {
+    private String getNameFromRequest(Request request) {
         return request.queryParams("name");
     }
 
@@ -59,28 +59,37 @@ public class ProductRepository implements Repository<Product> {
     @Override
     public Product findById(int id) {
         return Optional.ofNullable(products.get(id))
-                .orElse(productErrorResponse("The product with id %s does not exists", valueOf(id)));
+                .orElse(productMessageResponse("The product with id %s does not exists", valueOf(id)));
     }
 
     @Override
     public Product update(Request request) {
-        Map<String, Object> map = JSONToMap.fromJson(request.body());
-        Product product = product(parseInt(request.params("id")),
-                                 (String) map.get("name"),
-                                 (Double) map.get("price"));
-        Integer productId = product.getId();
-        if (products.get(productId) == null) {
-            return productErrorResponse("The product with id %s does not exists", valueOf(productId));
+        Integer id = parseInt(request.params("id"));
+        if (products.get(id) == null) {
+            return productMessageResponse("The product with id %s does not exists", valueOf(id));
         }
-        products.put(productId, product);
-        return products.get(productId);
+        Map<String, Object> map = JSONToMap.fromJson(request.body());
+        products.put(id, product(id,
+                                (String) map.get("name"),
+                                (Double) map.get("price")));
+        return products.get(id);
+    }
+
+    @Override
+    public Product delete(Request request) {
+        Integer id = parseInt(request.params("id"));
+        if (products.get(id) == null) {
+            return productMessageResponse("The product with id %s does not exists", valueOf(id));
+        }
+        products.remove(id);
+        return productMessageResponse("The product with id %s has been deleted", valueOf(id));
     }
 
     private Product product(Integer id, String name, Double price) {
         return new Product(id, name, price);
     }
 
-    private ProductErrorResponse productErrorResponse(String message, String name) {
+    private ProductErrorResponse productMessageResponse(String message, String name) {
         return new ProductErrorResponse(message, name);
     }
 

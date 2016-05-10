@@ -30,8 +30,10 @@
           "price": 200
         }
         ```
+        
+   * DELETE("/products/:id"): deletes a product
+
 
 ## Future improvements:
 
-   * Implement a view using [bootstrap](http://getbootstrap.com/)
    * Use postresql as DB
