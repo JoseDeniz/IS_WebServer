@@ -23,8 +23,9 @@ public class HashMapRepository implements Repository<Product> {
         if (isAnyProductWithSameName(product)) {
             return productErrorResponse("The product with name %s already exists", product.getName());
         }
-        products.put(product.getId(), product);
-        return product;
+        Integer productId = product.getId();
+        products.put(productId, product);
+        return products.get(productId);
     }
 
     private boolean isAnyProductWithSameName(Product product) {
