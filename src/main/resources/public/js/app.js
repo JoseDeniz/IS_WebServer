@@ -7,7 +7,7 @@ function updateHelloMessage() {
 }
 
 function updateProductList() {
-    $.getJSON(url + '/products', function (response) {
+   $.getJSON(url + '/products', function (response) {
         var i = 1;
         $.each(response, function () {
             var element = '<tr>' +
@@ -28,6 +28,7 @@ function updateProductList() {
 }
 
 function newProduct(request) {
+
     var jsonRequest = convertFormToJSON(request);
     var newProductName = jsonRequest.name;
     var newProductPrice = jsonRequest.price;
@@ -47,9 +48,9 @@ function newProduct(request) {
 }
 
 function editProduct(newAttributes){
-    //  PLEASE TEST THIS!!!
     var jsonNewAttributes = convertFormToJSON(newAttributes);
     var fullUrl = url + '/products/:' + jsonNewAttributes.id;
+    //  PLEASE TEST THIS!!!
     delete jsonNewAttributes.id;
     $.post(fullUrl, jsonNewAttributes, function(){
         refresh();
