@@ -16,3 +16,26 @@ img{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+h4{
+    position: relative;
+    color: cornflowerblue;
+}
+
+.with-border1{
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-color: #337ab7;
+    border-style: solid;
+}
+
+.with-border2{
+}
+
+h2{
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-top: 10px;
+}
