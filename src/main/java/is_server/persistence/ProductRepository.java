@@ -65,7 +65,7 @@ public class ProductRepository implements Repository<Product> {
     @Override
     public Product update(Request request) {
         Integer id = parseInt(request.params("id"));
-        if (products.get(id) == null) {
+        if (!productExists(id)) {
             return productMessageResponse("The product with id %s does not exists", valueOf(id));
         }
         Map<String, Object> map = JSONToMap.fromJson(request.body());
@@ -78,11 +78,15 @@ public class ProductRepository implements Repository<Product> {
     @Override
     public Product delete(Request request) {
         Integer id = parseInt(request.params("id"));
-        if (products.get(id) == null) {
+        if (!productExists(id)) {
             return productMessageResponse("The product with id %s does not exists", valueOf(id));
         }
         products.remove(id);
         return productMessageResponse("The product with id %s has been deleted", valueOf(id));
+    }
+
+    private boolean productExists(Integer id) {
+        return products.get(id) != null;
     }
 
     private Product product(Integer id, String name, Double price) {
