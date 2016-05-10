@@ -15,11 +15,11 @@ public class ProductController {
         this.productService = productService;
         this.jsonTransformer = new JsonTransformer();
         setRoutes();
+        CorsFilter.apply();
         after((request, response) -> response.type("application/json"));
     }
 
     private void setRoutes() {
-        CorsFilter.apply();
         get("/products", (request, response) -> productService.getAllProducts(), jsonTransformer);
         post("/products", (request, response) -> productService.createProduct(request), jsonTransformer);
         get("/products/:id", (request, response) -> productService.getProductById(request), jsonTransformer);
