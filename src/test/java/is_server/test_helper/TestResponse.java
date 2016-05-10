@@ -12,7 +12,7 @@ public class TestResponse {
     TestResponse(Integer status, String body) {
         this.status = status;
         this.body = body;
-    }u
+    }
 
     public Map<String, Object> jsonToMap() {
         return JSONToMap.fromJson(body);
