@@ -130,6 +130,26 @@ public class ProductControllerTest {
         assertThat(afterPutMap.get("id"), is(notNullValue()));
     }
 
+
+    @Test
+    public void
+    should_remove_a_product_doing_a_delete_action() throws IOException {
+
+        createAProduct();
+
+        TestResponse deleteResponse = doDelete("/products/1");
+        Map<String, Object> deleteMap = deleteResponse.jsonToMap();
+
+        assertStatusOK(deleteResponse);
+        assertThat(deleteMap.get("message"), is("The product with id 1 has been deleted"));
+
+        TestResponse getResponse = doGet("/products/1");
+        Map<String, Object> map = getResponse.jsonToMap();
+
+        assertStatusOK(getResponse);
+        assertThat(map.get("message"), is("The product with id 1 does not exists"));
+    }
+
     private TestResponse createAProduct() {
         return doPost("/products?name=foo&price=100");
     }

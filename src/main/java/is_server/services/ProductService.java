@@ -32,4 +32,7 @@ public class ProductService {
         return productRepository.update(request);
     }
 
+    public Product deleteProduct(Request request) {
+        return productRepository.delete(request);
+    }
 }

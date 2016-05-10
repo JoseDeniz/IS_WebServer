@@ -24,6 +24,7 @@ public class ProductController {
         post("/products", (request, response) -> productService.createProduct(request), jsonTransformer);
         get("/products/:id", (request, response) -> productService.getProductById(request), jsonTransformer);
         put("/products/:id", (request, response) -> productService.updateProduct(request), jsonTransformer);
+        delete("/products/:id", (request, response) -> productService.deleteProduct(request), jsonTransformer);
     }
 
 
