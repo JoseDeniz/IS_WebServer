@@ -1,4 +1,6 @@
+// TODO CHANGE BACK WHEN DONE
 var url = 'https://is-webserver.herokuapp.com';
+//var url = 'http://localhost:4567';
 
 function updateHelloMessage() {
     $.getJSON(url + '/hello', function (response) {
@@ -44,6 +46,18 @@ function editProduct(newAttributes){
         refresh();
     });
     // PLEASE TEST THIS!!!
+}
+
+function deleteProduct(product) {
+    var jsonProductID = convertFormToJSON(product).id;
+    var fullUrl = url + '/products/:' + jsonProductID;
+    $.ajax({
+        url: fullUrl,
+        type: 'DELETE',
+        success: function(){
+            refresh();
+        }
+    });
 }
 
 function refresh() {
