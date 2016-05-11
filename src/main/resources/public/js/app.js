@@ -46,10 +46,6 @@ function editProduct(newAttributes){
     // PLEASE TEST THIS!!!
 }
 
-function refresh() {
-    location.reload(true);
-}
-
 function convertFormToJSON(form){
     var array = jQuery(form).serializeArray();
     var json = {};
@@ -57,6 +53,10 @@ function convertFormToJSON(form){
         json[this.name] = this.value || '';
     });
     return json;
+}
+
+function refresh() {
+    location.reload(true);
 }
 
 $(document).ready(function () {
