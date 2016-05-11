@@ -1,7 +1,7 @@
 package is_server.persistence;
 
 import is_server.helper.JSONToMap;
-import is_server.helper.xxxMessageResponse;
+import is_server.helper.ProductMessageResponse;
 import is_server.model.Product;
 import spark.Request;
 
@@ -94,8 +94,8 @@ public class ProductRepository implements Repository<Product> {
         return new Product(id, name, price);
     }
 
-    private xxxMessageResponse productMessageResponse(String message, String id) {
-        return new xxxMessageResponse(message, id);
+    private ProductMessageResponse productMessageResponse(String message, String id) {
+        return new ProductMessageResponse(message, id);
     }
 
 }
