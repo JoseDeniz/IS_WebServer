@@ -40,7 +40,7 @@ function editProduct(newAttributes){
     delete jsonNewAttributes.id;
     console.log("Nuevos aributos del producto (SIN ID) : ");
     console.log(jsonNewAttributes);
-    $.post(fullUrl, jsonNewAttributes, function(){
+    $.put(fullUrl, jsonNewAttributes, function(){
         refresh();
     });
 }
