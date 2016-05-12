@@ -1,4 +1,5 @@
-var url = 'https://is-webserver.herokuapp.com';
+// var url = 'https://is-webserver.herokuapp.com';
+var url = 'http://localhost:4567';
 
 function updateHelloMessage() {
     $.getJSON(url + '/hello', function (response) {
@@ -8,8 +9,7 @@ function updateHelloMessage() {
 
 function updateProductList() {
     $.getJSON(url + '/products', function (response) {
-        var i = 1;
-        $.each(response, function () {
+        for (var i in response) {
             var element = '<tr>' +
                 '<td>' + response[i].id + '</td>' +
                 '<td>' + response[i].name + '</td>' +
@@ -20,8 +20,7 @@ function updateProductList() {
             element = '<option value=' + response[i].id +
                 '>' + response[i].id + '</option>';
             $('.id-list-for-select').append(element);
-            i++;
-        });
+        }
     });
 }
 
