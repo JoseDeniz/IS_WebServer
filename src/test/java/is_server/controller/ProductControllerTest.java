@@ -120,7 +120,7 @@ public class ProductControllerTest {
         assertThat(beforePutMap.get("price"), is(100.0));
         assertThat(beforePutMap.get("id"), is(notNullValue()));
 
-        TestResponse afterPutResponse = doPut("/products/1", "{\"name\":\"bar\", \"price\":200}");
+        TestResponse afterPutResponse = doPut("/products/1", "{\"name\":\"bar\", \"price\":\"200\"}");
         Map<String, Object> afterPutMap = afterPutResponse.jsonToMap();
 
         assertStatusOK(afterPutResponse);

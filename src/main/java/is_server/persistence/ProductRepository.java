@@ -72,7 +72,7 @@ public class ProductRepository implements Repository<Product> {
         Map<String, Object> map = JSONToMap.fromJson(request.body());
         products.put(id, product(id,
                                 (String) map.get("name"),
-                                (Double) map.get("price")));
+                                parseDouble(((String) map.get("price")))));
         return products.get(id);
     }
 

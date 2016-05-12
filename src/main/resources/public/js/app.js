@@ -40,7 +40,7 @@ function editProduct(newAttributes){
     $.ajax({
         url: fullUrl,
         type: 'PUT',
-        data: jsonNewAttributes,
+        data: JSON.stringify(jsonNewAttributes),
         dataType: 'json',
         success: function(){
             refresh();
@@ -50,9 +50,7 @@ function editProduct(newAttributes){
 
 function deleteProduct(product) {
     var jsonProductID = convertFormToJSON(product).id;
-    console.log("ID del producto a borrar : " + jsonProductID);
     var fullUrl = url + '/products/' + jsonProductID;
-    console.log("url a la que se envía el DELETE : " + fullUrl);
     $.ajax({
         url: fullUrl,
         type: 'DELETE',
