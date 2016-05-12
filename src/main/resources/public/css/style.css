@@ -136,5 +136,9 @@ input[type="number"]:not([class="edit-product-input"]){
     float: left;
 }
 
-#id-list-for-select{
+.delete-product-form{
+    float: left;
+}
+
+.id-list-for-select{
 }
