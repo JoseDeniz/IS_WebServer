@@ -36,12 +36,14 @@ function newProduct(request) {
 function editProduct(newAttributes){
     var jsonNewAttributes = convertFormToJSON(newAttributes);
     var fullUrl = url + '/products/' + jsonNewAttributes.id;
-    console.log("url de la peticion : " + fullUrl);
     delete jsonNewAttributes.id;
-    console.log("Nuevos aributos del producto (SIN ID) : ");
-    console.log(jsonNewAttributes);
-    $.put(fullUrl, jsonNewAttributes, function(){
-        refresh();
+    $.ajax({
+        url: fullUrl,
+        type: 'PUT',
+        data: jsonNewAttributes,
+        success: function(){
+            refresh();
+        }
     });
 }
 
