@@ -9,7 +9,7 @@ function updateHelloMessage() {
 }
 
 function updateProductList() {
-   $.getJSON(url + '/products', function (response) {
+    $.getJSON(url + '/products', function (response) {
         var i = 1;
         $.each(response, function () {
             var element = '<tr>' +
@@ -19,11 +19,9 @@ function updateProductList() {
                 '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
                 '</tr>';
             $('#product-list').append(element);
-            //  PLEASE TEST THIS!!!
             element = '<option value=' + response[i].id +
                 '>' + response[i].id + '</option>';
             $('#id-list-for-select').append(element);
-            // PLEASE TEST THIS!!!
             i++;
         });
     });
@@ -40,17 +38,20 @@ function newProduct(request) {
 function editProduct(newAttributes){
     var jsonNewAttributes = convertFormToJSON(newAttributes);
     var fullUrl = url + '/products/:' + jsonNewAttributes.id;
-    //  PLEASE TEST THIS!!!
+    console.log("url de la peticion : " + fullUrl);
     delete jsonNewAttributes.id;
+    console.log("Nuevos aributos del producto (SIN ID) : ");
+    console.log(jsonNewAttributes);
     $.post(fullUrl, jsonNewAttributes, function(){
         refresh();
     });
-    // PLEASE TEST THIS!!!
 }
 
 function deleteProduct(product) {
     var jsonProductID = convertFormToJSON(product).id;
+    console.log("ID del producto a borrar : " + jsonProductID);
     var fullUrl = url + '/products/:' + jsonProductID;
+    console.log("url a la que se envía el DELETE : " + fullUrl);
     $.ajax({
         url: fullUrl,
         type: 'DELETE',

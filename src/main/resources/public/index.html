@@ -68,7 +68,9 @@
                     <div class="left-spacing edit-product-form" align="left">
                         <h4>Modificar producto:</h4>
                         <form class="spacing" id="editForm" name="editProductForm" action="javascript:editProduct(document.forms.editProductForm);"  method="POST">
-                            <label>ID:</label> <select required class="id-list-for-select" name="id" form="editForm"></select><br>
+                            <!-- TODO <label>ID:</label> <select class="id-list-for-select" name="id" form="editForm"></select><br> -->
+
+                            <label>ID:</label> <input class="id-list-for-select" name="id" form="editForm"></select><br>
                             <label>Nombre:</label> <input class="spacing" type="text" name="name"><br>
                             <label>Precio:</label> <input class="spacing" type="number" name="price"><br>
                             <input class="spacing" type="submit" value="Modificar">
@@ -77,7 +79,9 @@
                     <div class="left-spacing delete-product-form" align="left">
                         <h4>Eliminar producto:</h4>
                         <form class="spacing" id="deleteForm" name="deleteProductForm" action="javascript:deleteProduct(document.forms.deleteProductForm);"  method="POST">
-                            <label>ID:</label> <select required class="id-list-for-select" name="id" form="deleteForm"></select><br>
+                            <!-- TODO change back to <label>ID:</label> <select  class="id-list-for-select" name="id" form="deleteForm"></select><br>  -->
+
+                            <label>ID:</label> <input class="id-list-for-select" name="id" form="deleteForm"></select><br>
                             <input class="spacing" type="submit" value="Eliminar">
                         </form>
                     </div>
