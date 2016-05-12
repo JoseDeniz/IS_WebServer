@@ -13,7 +13,7 @@ function updateProductList() {
                 '<td>' + response[i].id + '</td>' +
                 '<td>' + response[i].name + '</td>' +
                 '<td>' + response[i].price + ' \€' + '</td>' +
-                '<td><img src="http://www.fndvisions.org/img/cutecat.jpg"></td>' +
+                '<td><img src="../media/box.png"></td>' +
                 '</tr>';
             $('#product-list').append(element);
             element = '<option value=' + response[i].id +
