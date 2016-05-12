@@ -1,6 +1,4 @@
-// TODO CHANGE BACK WHEN DONE
 var url = 'https://is-webserver.herokuapp.com';
-//var url = 'http://localhost:4567';
 
 function updateHelloMessage() {
     $.getJSON(url + '/hello', function (response) {
@@ -21,7 +19,7 @@ function updateProductList() {
             $('#product-list').append(element);
             element = '<option value=' + response[i].id +
                 '>' + response[i].id + '</option>';
-            $('#id-list-for-select').append(element);
+            $('.id-list-for-select').append(element);
             i++;
         });
     });
@@ -32,7 +30,7 @@ function newProduct(request) {
     var newProductName = jsonRequest.name;
     var newProductPrice = jsonRequest.price;
     var fullUrl = url + '/products?name=' + newProductName + '&price=' + newProductPrice;
-    $.post(fullUrl, jsonRequest, function(response){ refresh(); });
+    $.post(fullUrl, jsonRequest, function(){ refresh(); });
 }
 
 function editProduct(newAttributes){
