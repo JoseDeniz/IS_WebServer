@@ -41,6 +41,7 @@ function editProduct(newAttributes){
         url: fullUrl,
         type: 'PUT',
         data: jsonNewAttributes,
+        dataType: 'json',
         success: function(){
             refresh();
         }
