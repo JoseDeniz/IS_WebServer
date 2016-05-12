@@ -1,5 +1,4 @@
-// var url = 'https://is-webserver.herokuapp.com';
-var url = 'http://localhost:4567';
+var url = 'https://is-webserver.herokuapp.com';
 
 function updateHelloMessage() {
     $.getJSON(url + '/hello', function (response) {
