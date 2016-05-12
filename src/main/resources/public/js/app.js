@@ -35,7 +35,7 @@ function newProduct(request) {
 
 function editProduct(newAttributes){
     var jsonNewAttributes = convertFormToJSON(newAttributes);
-    var fullUrl = url + '/products/:' + jsonNewAttributes.id;
+    var fullUrl = url + '/products/' + jsonNewAttributes.id;
     console.log("url de la peticion : " + fullUrl);
     delete jsonNewAttributes.id;
     console.log("Nuevos aributos del producto (SIN ID) : ");
@@ -48,7 +48,7 @@ function editProduct(newAttributes){
 function deleteProduct(product) {
     var jsonProductID = convertFormToJSON(product).id;
     console.log("ID del producto a borrar : " + jsonProductID);
-    var fullUrl = url + '/products/:' + jsonProductID;
+    var fullUrl = url + '/products/' + jsonProductID;
     console.log("url a la que se envía el DELETE : " + fullUrl);
     $.ajax({
         url: fullUrl,
